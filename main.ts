@@ -1,6 +1,6 @@
 input.onButtonPressed(Button.A, function () {
     brightness += -10
-    if (brightness < 20) {
+    if (brightness < 10) {
         brightness = 50
     }
     strip.setBrightness(brightness)
