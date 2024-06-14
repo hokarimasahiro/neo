@@ -6,6 +6,9 @@ input.onButtonPressed(Button.A, function () {
     strip.setBrightness(brightness)
     strip.show()
     watchfont.showNumber2(brightness / 10)
+    if (mode == 0) {
+        strip.showRainbow(1, 360)
+    }
 })
 input.onButtonPressed(Button.B, function () {
     brightness += 10
@@ -15,8 +18,12 @@ input.onButtonPressed(Button.B, function () {
     strip.setBrightness(brightness)
     strip.show()
     watchfont.showNumber2(brightness / 10)
+    if (mode == 0) {
+        strip.showRainbow(1, 360)
+    }
 })
 let rainbowNo = 0
+let mode = 0
 let brightness = 0
 let strip: neopixel.Strip = null
 pins.setPull(DigitalPin.P8, PinPullMode.PullUp)
@@ -27,7 +34,7 @@ brightness = 50
 strip.setBrightness(brightness)
 strip.showRainbow(1, 360)
 strip.show()
-let mode = 0
+mode = 0
 let rainbow = [
 neopixel.colors(NeoPixelColors.Red),
 neopixel.colors(NeoPixelColors.Orange),
@@ -50,6 +57,8 @@ basic.forever(function () {
         mode = 2
         basic.showNumber(2)
     }
+})
+basic.forever(function () {
     if (mode == 0) {
         strip.rotate(7)
         strip.show()
